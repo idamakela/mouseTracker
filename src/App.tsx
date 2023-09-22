@@ -11,7 +11,7 @@ function App() {
     let timeoutId: any; 
 
     if (bodyElement && changeCursor) {
-      bodyElement.classList.add('biggerCursor');
+      bodyElement.classList.add('smallerCursor');
 
       timeoutId = setTimeout(() => {
         bodyElement.classList.remove('smallerCursor');
@@ -26,8 +26,6 @@ function App() {
     };
 
   }, [changeCursor]);
-
-  // om x är sant --> toggle, men efter 200, sätt den till falskt igen
 
   return (
     <div

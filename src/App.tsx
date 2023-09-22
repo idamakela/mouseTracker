@@ -1,21 +1,38 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import MouseTracker from './components/MouseTracker';
 
 function App() {
-  const toggleCursor = (): void => {
-    const bodyElement: HTMLBodyElement | null = document.querySelector('body');
+  const [changeCursor, setChangeCursor] = useState<boolean>(false);
 
-    if (bodyElement) {
-        bodyElement.classList.toggle('biggerCursor');
+  useEffect(() => {
+    const bodyElement: HTMLBodyElement | null = document.querySelector('body');
+    let timeoutId: any; 
+
+    if (bodyElement && changeCursor) {
+      bodyElement.classList.add('biggerCursor');
+
+      timeoutId = setTimeout(() => {
+        bodyElement.classList.remove('smallerCursor');
+        setChangeCursor(false);
+      }, 300);
     }
-  };
+
+    return () => {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+    };
+
+  }, [changeCursor]);
+
+  // om x är sant --> toggle, men efter 200, sätt den till falskt igen
 
   return (
     <div
       className='min-h-screen flex flex-col p-2 bg-paleWhite customCursor'
-      onClick={() => toggleCursor()}
+      onClick={() => setChangeCursor(true)}
     >
       <Header />
       <MouseTracker />

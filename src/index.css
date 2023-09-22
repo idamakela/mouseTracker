@@ -11,12 +11,13 @@
     }
 }
 
+
 body {
-    cursor: url('./assets/icons8-hand-drawn-star-24.png'), auto;
+    cursor: url('./assets/icons8-hand-drawn-star-50.png'), auto;
 }
 
-body.biggerCursor {
-    cursor: url('./assets/icons8-hand-drawn-star-50.png'), auto;
+body.smallerCursor {
+    cursor: url('./assets/icons8-hand-drawn-star-24.png'), auto;
 }
 
 p {

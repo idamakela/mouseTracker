@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .borderBase {
+        border: 4px solid #141311;
+        border-radius: 20px;
+    }
+}
+
+body {
+    cursor: url('./assets/icons8-hand-drawn-star-24.png'), auto;
+}
+
+body.biggerCursor {
+    cursor: url('./assets/icons8-hand-drawn-star-50.png'), auto;
+}
+
+p {
+    margin: 3% 0;
+}

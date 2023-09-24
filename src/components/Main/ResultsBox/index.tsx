@@ -14,6 +14,7 @@ interface ResultsBoxProps {
 }
 
 const ResultsBox = ({ resultsBoxId }: ResultsBoxProps) => {
+
   return (
     <div id={resultsBoxId} className='borderBase p-4 max-w-md'>
       <h3 id={resultsBoxId} className='capitalize text-2xl font-semibold'>

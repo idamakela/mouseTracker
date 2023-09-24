@@ -1,4 +1,4 @@
-import handleClickedElement from '../../utils/handleClickedElement.ts';
+import findClickedElement from '../../utils/findClickedElement.ts';
 
 interface FooterProps {
   footerId: string;
@@ -9,7 +9,7 @@ const Footer = ({ footerId, myNameId }: FooterProps) => {
   return (
     <footer
       id={footerId}
-      onClick={handleClickedElement}
+      onClick={findClickedElement}
       className='flex justify-end'
     >
       <h3

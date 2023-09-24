@@ -7,7 +7,7 @@
  * 
  * Temporary solution below! 
  * 
- */
+*/
 
 interface ResultsBoxProps {
   resultsBoxId: string;

@@ -1,4 +1,4 @@
-import findClickedElement from '../../utils/findClickedElement.ts';
+import handleClickedElement from '../../utils/handleClickedElement.ts';
 import ResultsBox from './ResultsBox';
 
 interface MainProps {
@@ -11,7 +11,7 @@ const Main = ({ mainId, resultsBoxId }: MainProps) => {
     <main
       id={mainId}
       className='flex-grow text-center flex flex-col items-center justify-center'
-      onClick={findClickedElement}
+      onClick={handleClickedElement}
     >
       <ResultsBox resultsBoxId={resultsBoxId} />
     </main>

@@ -19,7 +19,11 @@ const Header = ({ headerId }: HeaderProps) => {
     <header
       id={headerId}
       className='flex p-4 justify-between borderBase bg-paleBlue font-semibold'
-      onClick={(e) => setCurrentClickedItem(e.target.id)}
+      onClick={(e) => {
+        setCurrentClickedItem(e.target.id)
+        console.log(currentClickedItem);
+        
+    }}
     >
       <div id={headerId}>LOGO</div>
       <h1 id={headerId} className='text-lg'>

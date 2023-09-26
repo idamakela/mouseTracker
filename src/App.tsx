@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Main from './components/Main';
+import { ClickedItemContext } from './utils/contexts';
 
 function App() {
   const [changeCursor, setChangeCursor] = useState<boolean>(false);
   const [currentClickedItem, setCurrentClickedItem] = useState<string>('');
-  
 
   useEffect(() => {
     const bodyElement: HTMLBodyElement | null = document.querySelector('body');
@@ -29,18 +29,18 @@ function App() {
   }, [changeCursor]);
 
   return (
-    <div
-      className='min-h-screen flex flex-col p-2 bg-paleWhite customCursor'
-      onClick={() => setChangeCursor(true)}
+    <ClickedItemContext.Provider
+      value={{ currentClickedItem, setCurrentClickedItem }}
     >
-      <Header
-        headerId='header'
-        currentClickedItem={currentClickedItem}
-        setCurrentClickedItem={setCurrentClickedItem}
-      />
-      <Main mainId='main' resultsBoxId='resultsBox' />
-      <Footer footerId='footer' myNameId='myName' />
-    </div>
+      <div
+        className='min-h-screen flex flex-col p-2 bg-paleWhite customCursor'
+        onClick={() => setChangeCursor(true)}
+      >
+        <Header headerId='header' />
+        <Main mainId='main' resultsBoxId='resultsBox' />
+        <Footer footerId='footer' myNameId='myName' />
+      </div>
+    </ClickedItemContext.Provider>
   );
 }
 

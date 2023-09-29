@@ -31,11 +31,7 @@ const Header = ({ headerId }: HeaderProps) => {
 
   useEffect(() => {
     console.log(currentClickedItem);
-
-    // här ska functionen för resterande display UI beee!! 
-
-
-  }, [currentClickedItem])
+  }, [currentClickedItem]);
 
   return (
     <header

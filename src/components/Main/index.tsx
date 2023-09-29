@@ -1,7 +1,8 @@
 import ResultsBox from './ResultsBox';
 import { ClickedItemContext } from '../../utils/contexts';
 import { ClickedItemType } from '../../utils/contexts';
-import { useContext, useRef } from 'react';
+import React, { useContext, useRef, useEffect } from 'react';
+import getClickedElementId from '../../utils/getClickedElementId';
 
 interface MainProps {
   mainId: string;
@@ -13,30 +14,24 @@ const Main = ({ mainId, resultsBoxId }: MainProps) => {
     ClickedItemContext
   ) as ClickedItemType;
 
-  const ref = useRef();
+  const ref = useRef<HTMLDivElement>(null);
+  const resultsBoxRef: React.RefObject<T> = ref.current;
 
-  const handleClick = (e) => {
-    const targetId = e.target.id;
-
-    if (targetId === '' && ref.current) {
-      const currentId = ref.current.id;
-      return console.log({ currentId });
-    }
-
-    console.log({ targetId });
+  const handleClick = (
+    e: React.MouseEvent,
+    refObject: React.RefObject<T>
+  ): void => {
+    const clickedItemId: string = getClickedElementId({ e, refObject });
+    console.log({ clickedItemId });
   };
 
   return (
     <main
       id={mainId}
       className='flex-grow text-center flex flex-col items-center justify-center'
-      onClick={handleClick}
-      //   onClick={(e) => {
-      //     setCurrentClickedItem(e.target.id);
-      //     console.log(currentClickedItem);
-      //   }}
+      onClick={(e) => handleClick(e, resultsBoxRef)}
     >
-      <ResultsBox resultsBoxId={resultsBoxId} refProp={ref} />
+      <ResultsBox resultsBoxId={resultsBoxId} refPropResultsBox={ref} />
     </main>
   );
 };

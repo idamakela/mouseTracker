@@ -1,7 +1,6 @@
-import findClickedElement from '../../utils/findClickedElement.ts';
 import { ClickedItemContext } from '../../utils/contexts';
 import { ClickedItemType } from '../../utils/contexts';
-import { useContext } from 'react';
+import { useContext, useRef } from 'react';
 
 interface FooterProps {
   footerId: string;
@@ -13,14 +12,17 @@ const Footer = ({ footerId, myNameId }: FooterProps) => {
     ClickedItemContext
   ) as ClickedItemType;
 
+  const handleClick = (e) => {
+    const targetId = e.target.id;
+    console.log({ targetId });
+  };
+
   return (
     <footer
       id={footerId}
-      onClick={(e) => {
-        setCurrentClickedItem(e.target.id);
-        console.log(currentClickedItem);
-      }}
+      onClick={handleClick}
       className='flex justify-end'
+      onClick={handleClick}
     >
       <h3
         id={myNameId}

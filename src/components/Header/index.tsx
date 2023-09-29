@@ -9,8 +9,7 @@
  *
  */
 
-import findClickedElement from '../../utils/findClickedElement.ts';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import { ClickedItemContext } from '../../utils/contexts';
 import { ClickedItemType } from '../../utils/contexts';
 import { handleClickedItem } from '../../utils/handleClickedItem';
@@ -24,20 +23,30 @@ const Header = ({ headerId }: HeaderProps) => {
     ClickedItemContext
   ) as ClickedItemType;
 
-  const handleClick = async (targetId: any) => {
-    const id = targetId;
-    await setCurrentClickedItem(id);
+  const ref = useRef();
+
+  const handleClick = () => {
+    if (ref.current) {
+      const currentId = ref.current.id;
+      console.log({ currentId });
+    }
   };
 
-  useEffect(() => {
-    console.log(currentClickedItem);
-  }, [currentClickedItem]);
+  //   const handleClick = async (targetId: any) => {
+  //     const id = targetId;
+  //     await setCurrentClickedItem(id);
+  //   };
+
+  //   useEffect(() => {
+  //     console.log(currentClickedItem);
+  //   }, [currentClickedItem]);
 
   return (
     <header
+      ref={ref}
       id={headerId}
       className='flex p-4 justify-between borderBase bg-paleBlue font-semibold'
-      onClick={(e) => handleClick(e.target.id)}
+      onClick={handleClick}
     >
       <div id={headerId}>LOGO</div>
       <h1 id={headerId} className='text-lg'>

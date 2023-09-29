@@ -6,7 +6,10 @@ import { ClickedItemContext } from './utils/contexts';
 
 function App() {
   const [changeCursor, setChangeCursor] = useState<boolean>(false);
+<<<<<<< HEAD
   const [currentClickedItem, setCurrentClickedItem] = useState<string>('');
+=======
+>>>>>>> main
 
   useEffect(() => {
     const bodyElement: HTMLBodyElement | null = document.querySelector('body');

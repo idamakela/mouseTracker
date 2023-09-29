@@ -21,7 +21,7 @@ const Header = ({ headerId }: HeaderProps) => {
     refObject: React.RefObject<T>
   ): void => {
     const clickedItemId: string = getClickedElementId({ e, refObject });
-    console.log({ clickedItemId });
+    setCurrentClickedItem(clickedItemId);
   };
 
   return (

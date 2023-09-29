@@ -5,7 +5,11 @@ interface ResultsBoxProps {
 
 const ResultsBox = ({ resultsBoxId, refPropResultsBox }: ResultsBoxProps) => {
   return (
-    <div ref={refPropResultsBox} id={resultsBoxId} className='borderBase p-4 max-w-md'>
+    <div
+      ref={refPropResultsBox}
+      id={resultsBoxId}
+      className='borderBase p-4 max-w-md'
+    >
       <h3 className='capitalize text-2xl font-semibold'>click me!</h3>
       <p className='px-4'>
         Click anywhere on the screen to find out where the mouse is positioned.

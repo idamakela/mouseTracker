@@ -2,11 +2,12 @@ import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Main from './components/Main';
-import { ClickedItemContext } from './utils/contexts';
+import { ClickedItemContext, DisplayItemContext } from './utils/contexts';
 
 function App() {
   const [changeCursor, setChangeCursor] = useState<boolean>(false);
   const [currentClickedItem, setCurrentClickedItem] = useState<string>('');
+  const [displayClickedItem, setDisplayClickedItem] = useState<string>('');
 
   // Room for improvment, doesnt work sometimes ...?
   useEffect(() => {
@@ -33,14 +34,18 @@ function App() {
     <ClickedItemContext.Provider
       value={{ currentClickedItem, setCurrentClickedItem }}
     >
-      <div
-        className='min-h-screen flex flex-col p-2 bg-paleWhite customCursor'
-        onClick={() => setChangeCursor(true)}
+      <DisplayItemContext.Provider
+        value={{ displayClickedItem, setDisplayClickedItem }}
       >
-        <Header headerId='header' />
-        <Main mainId='main' resultsBoxId='resultsBox' />
-        <Footer footerId='footer' myNameId='myName' />
-      </div>
+        <div
+          className='min-h-screen flex flex-col p-2 bg-paleWhite customCursor'
+          onClick={() => setChangeCursor(true)}
+        >
+          <Header headerId='header' />
+          <Main mainId='main' resultsBoxId='resultsBox' />
+          <Footer footerId='footer' myNameId='myName' />
+        </div>
+      </DisplayItemContext.Provider>
     </ClickedItemContext.Provider>
   );
 }

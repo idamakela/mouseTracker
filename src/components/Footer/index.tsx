@@ -13,11 +13,9 @@ const Footer = ({ footerId, myNameId }: FooterProps) => {
     ClickedItemContext
   ) as ClickedItemType;
 
-  const handleClick = (
-    e: React.MouseEvent,
-  ): void => {
+  const handleClick = (e: React.MouseEvent): void => {
     const clickedItemId: string = getClickedElementId({ e });
-    console.log({ clickedItemId });
+    setCurrentClickedItem(clickedItemId);
   };
 
   return (

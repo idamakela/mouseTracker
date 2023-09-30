@@ -37,7 +37,6 @@ function App() {
     };
   }, [changeCursor]);
 
-  // Create global handleClick function and pass it down as propps to children.
   const handleGlobalClick = (
     e: React.MouseEvent,
     refObject: React.RefObject<T>

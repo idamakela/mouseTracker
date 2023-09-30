@@ -1,4 +1,5 @@
 import { useContext, useEffect, useRef } from 'react';
+import logo from '../../assets/noun-mouse-click-1642755.svg';
 
 interface HeaderProps {
   headerId: string;
@@ -16,13 +17,18 @@ const Header = ({ headerId, handleGlobalClick }: HeaderProps) => {
     <header
       ref={ref}
       id={headerId}
-      className='flex p-4 justify-between borderBase bg-paleBlue font-semibold'
+      className='flex p-4 justify-between content-end borderBase bg-paleBlue font-semibold'
       onClick={(e) => handleGlobalClick(e, headerRef)}
     >
-      <div id={headerId}>LOGO</div>
-      <h1 id={headerId} className='text-lg'>
-        mouseTracker.io
-      </h1>
+      <div className='flex justify-center content-center min-w-[40px]'>
+        <img
+          src={logo}
+          alt='Created by Khuzema from Noun Project'
+          height='25'
+          width='25'
+        />
+      </div>
+      <h1 className='text-lg'>mouseTracker.io</h1>
     </header>
   );
 };

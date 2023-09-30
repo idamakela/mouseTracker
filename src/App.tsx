@@ -7,6 +7,8 @@ import {
   DisplayItemContext,
   TimesClickedContext,
 } from './utils/contexts';
+import getClickedElementId from './utils/getClickedElementId';
+import iterateByThree from './utils/iterateByNum';
 
 function App() {
   const [changeCursor, setChangeCursor] = useState<boolean>(false);
@@ -35,6 +37,21 @@ function App() {
     };
   }, [changeCursor]);
 
+  // Create global handleClick function and pass it down as propps to children.
+  const handleGlobalClick = (
+    e: React.MouseEvent,
+    refObject: React.RefObject<T>
+  ): void => {
+    const clickedItemId: string = getClickedElementId({ e, refObject });
+
+    if (clickedItemId !== currentClickedItem) {
+      setCurrentClickedItem(clickedItemId);
+      setClickCount(0);
+    } else {
+      setClickCount((prev) => iterateByThree(prev));
+    }
+  };
+
   return (
     <ClickedItemContext.Provider
       value={{ currentClickedItem, setCurrentClickedItem }}
@@ -47,9 +64,13 @@ function App() {
             className='min-h-screen flex flex-col p-2 bg-paleWhite customCursor'
             onClick={() => setChangeCursor(true)}
           >
-            <Header headerId='header' />
-            <Main mainId='main' resultsBoxId='resultsBox' />
-            <Footer footerId='footer' myNameId='myName' />
+            <Header headerId='header' handleGlobalClick={handleGlobalClick}/>
+            <Main
+              mainId='main'
+              resultsBoxId='resultsBox'
+              handleGlobalClick={handleGlobalClick}
+            />
+            <Footer footerId='footer' myNameId='myName' handleGlobalClick={handleGlobalClick}/>
           </div>
         </TimesClickedContext.Provider>
       </DisplayItemContext.Provider>

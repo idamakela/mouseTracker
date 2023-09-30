@@ -1,8 +1,17 @@
 import { useContext, useEffect, useRef } from 'react';
-import { ClickedItemContext } from '../../utils/contexts';
-import { ClickedItemType } from '../../utils/contexts';
+import {
+  ClickedItemContext,
+  DisplayItemContext,
+  TimesClickedContext,
+} from '../../utils/contexts';
+import {
+  ClickedItemType,
+  DisplayitemType,
+  TimesClickedType,
+} from '../../utils/types';
 import { handleClickedItem } from '../../utils/handleClickedItem';
 import getClickedElementId from '../../utils/getClickedElementId';
+import iterateByThree from '../../utils/iterateByNum';
 
 interface HeaderProps {
   headerId: string;
@@ -13,6 +22,10 @@ const Header = ({ headerId }: HeaderProps) => {
     ClickedItemContext
   ) as ClickedItemType;
 
+  const { clickCount, setClickCount } = useContext(
+    TimesClickedContext
+  ) as TimesClickedType;
+
   const ref = useRef();
   const headerRef: React.RefObject<T> = ref.current;
 
@@ -21,7 +34,13 @@ const Header = ({ headerId }: HeaderProps) => {
     refObject: React.RefObject<T>
   ): void => {
     const clickedItemId: string = getClickedElementId({ e, refObject });
-    setCurrentClickedItem(clickedItemId);
+
+    if (clickedItemId !== currentClickedItem) {
+      setCurrentClickedItem(clickedItemId);
+      setClickCount(0);
+    } else {
+      setClickCount((prev) => iterateByThree(prev));
+    }
   };
 
   return (

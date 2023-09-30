@@ -1,10 +1,17 @@
 import React, { useContext, useRef, useEffect, useState } from 'react';
 import ResultsBox from './ResultsBox';
 import getClickedElementId from '../../utils/getClickedElementId';
-import { ClickedItemContext, DisplayItemContext } from '../../utils/contexts';
-import { ClickedItemType, DisplayitemType } from '../../utils/types';
-
 import iterateByThree from '../../utils/iterateByNum';
+import {
+  ClickedItemContext,
+  DisplayItemContext,
+  TimesClickedContext,
+} from '../../utils/contexts';
+import {
+  ClickedItemType,
+  DisplayitemType,
+  TimesClickedType,
+} from '../../utils/types';
 
 interface MainProps {
   mainId: string;
@@ -20,7 +27,9 @@ const Main = ({ mainId, resultsBoxId }: MainProps) => {
     DisplayItemContext
   ) as DisplayitemType;
 
-  const [clickCount, setClickCount] = useState<number>(0);
+  const { clickCount, setClickCount } = useContext(
+    TimesClickedContext
+  ) as TimesClickedType;
 
   const ref = useRef<HTMLDivElement>(null);
   const resultsBoxRef: React.RefObject<T> = ref.current;
@@ -30,7 +39,6 @@ const Main = ({ mainId, resultsBoxId }: MainProps) => {
     refObject: React.RefObject<T>
   ): void => {
     const clickedItemId: string = getClickedElementId({ e, refObject });
-    // setCurrentClickedItem(clickedItemId);
 
     if (clickedItemId !== currentClickedItem) {
       setCurrentClickedItem(clickedItemId);

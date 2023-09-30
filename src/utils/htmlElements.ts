@@ -6,28 +6,28 @@ interface HTMLObject {
   myName: string[];
 }
 
-const HtmlElements: HTMLObject = {
+const htmlElements: HTMLObject = {
   header: [
-    'the header',
-    'the header, again',
+    'You clicked the header',
+    'You clicked the header, again',
     "Don't you know this is the header already?",
   ],
-  main: ['the main', 'the main again', 'THIS IS THE MAIN ELEMENT!'],
+  main: ['You clicked the main', 'You clicked the main again', 'THIS IS THE MAIN ELEMENT!'],
   resultsBox: [
-    'the text container',
-    'the TEXT container',
-    'an area where text is contained...',
+    'You clicked the text container',
+    'You clicked the TEXT container',
+    'You clicked a area where text is contained.',
   ],
   footer: [
-    'footer',
-    'the foot of the website',
-    'the bottom part of the website, aka footer.',
+    'You clicked footer',
+    'You clicked the foot of the website',
+    'You clicked the bottom part of the website, aka footer.',
   ],
   myName: [
-    'my name',
-    'a Finish name',
+    'You clicked my name',
+    'You clicked a Finish name',
     'I have a github you know, you could just go there to find out about me: @/idamakela',
   ],
 };
 
-export default HtmlElements;
+export default htmlElements;

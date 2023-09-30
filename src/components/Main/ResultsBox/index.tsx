@@ -1,4 +1,5 @@
-import React, { useContext, useRef, useEffect, useState } from 'react';
+import htmlElements from '../../../utils/htmlElements';
+import { useContext, useEffect } from 'react';
 import {
   ClickedItemContext,
   DisplayItemContext,
@@ -30,29 +31,25 @@ const ResultsBox = ({ resultsBoxId, refPropResultsBox }: ResultsBoxProps) => {
 
   useEffect(() => {
     if (currentClickedItem !== '' && clickCount < 3) {
-      console.log({ currentClickedItem, clickCount });
+      const foundObjectValues: string[] = htmlElements[currentClickedItem];
+      const foundArrayValue: string = foundObjectValues[clickCount];
+      setDisplayClickedItem(foundArrayValue);
     }
   }, [currentClickedItem, clickCount]);
-
-  /** SET UI
-   *  check how many times a item has been clicked, iteratable by 3
-   *  check clicked and what has been clicked to object array
-   *  display corresponding string in UI
-   */
 
   return (
     <div
       ref={refPropResultsBox}
       id={resultsBoxId}
-      className='borderBase p-4 max-w-md'
+      className='borderBase p-8 max-w-md'
     >
       <h3 className='capitalize text-2xl font-semibold'>click me!</h3>
-      <p className='px-4'>
+      <p className='pt-4 pb-8'>
         Click anywhere on the screen to find out where the mouse is positioned.
       </p>
-      <div className='borderBase m-2 bg-paleBlue p-2'>
-        <h4 className='uppercase text-lg font-medium'>results</h4>
-        <p>you clicked</p>
+      <div className='borderBase m-2 bg-paleBlue p-2 min-h-[180px]'>
+        <h4 className='capitalize text-lg font-semibold p-2'>results</h4>
+        <p className='p-4'>{displayClickedItem}</p>
       </div>
     </div>
   );

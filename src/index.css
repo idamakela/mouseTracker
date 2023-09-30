@@ -18,7 +18,3 @@ body {
 body.smallerCursor {
     cursor: url('./assets/icons8-hand-drawn-star-24.png'), auto;
 }
-
-p {
-    margin: 3% 0;
-}

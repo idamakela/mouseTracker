@@ -1,5 +1,5 @@
 const iterateByThree = (num: number): number => {
-  if (num === 3) {
+  if (num === 2) {
     return 0;
   } else {
     return num + 1;

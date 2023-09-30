@@ -40,12 +40,6 @@ const Main = ({ mainId, resultsBoxId }: MainProps) => {
     }
   };
 
-  /*
-   * ISSUE
-   * on forth click useEffect doesn't run
-   *  on fith it resets to 0
-   */
-
   useEffect(() => {
     if (currentClickedItem !== '' && clickCount < 3) {
       console.log({ currentClickedItem, clickCount });

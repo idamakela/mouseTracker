@@ -1,18 +1,18 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import ResultsBox from './ResultsBox';
 
 interface MainProps {
   mainId: string;
   resultsBoxId: string;
   handleGlobalClick: (
-    e: React.MouseEvent,
-    refObject: React.RefObject<T>
+    e: any,
+    refObject: any
   ) => void;
 }
 
 const Main = ({ mainId, resultsBoxId, handleGlobalClick }: MainProps) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const resultsBoxRef: React.RefObject<T> = ref.current;
+  const ref: any = useRef<HTMLDivElement>(null);
+  const resultsBoxRef: any = ref.current;
 
   return (
     <main

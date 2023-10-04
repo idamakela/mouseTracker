@@ -1,7 +1,7 @@
 interface FooterProps {
   footerId: string;
   myNameId: string;
-  handleGlobalClick: (e: React.MouseEvent, refObject: React.RefObject<T>) => void;
+  handleGlobalClick: (e: any) => void;
 }
 
 const Footer = ({ footerId, myNameId, handleGlobalClick }: FooterProps) => {

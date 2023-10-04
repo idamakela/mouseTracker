@@ -1,17 +1,17 @@
-import { useContext, useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import logo from '../../assets/noun-mouse-click-1642755.svg';
 
 interface HeaderProps {
   headerId: string;
   handleGlobalClick: (
-    e: React.MouseEvent,
-    refObject: React.RefObject<T>
+    e: any,
+    refObject: any
   ) => void;
 }
 
 const Header = ({ headerId, handleGlobalClick }: HeaderProps) => {
-  const ref = useRef();
-  const headerRef: React.RefObject<T> = ref.current;
+  const ref: any = useRef<HTMLDivElement>();
+  const headerRef: any = ref.current;
 
   return (
     <header

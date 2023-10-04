@@ -16,6 +16,7 @@ function App() {
   const [displayClickedItem, setDisplayClickedItem] = useState<string>('');
   const [clickCount, setClickCount] = useState<number>(0);
 
+
   // Room for improvment, doesnt work sometimes ...?
   useEffect(() => {
     const bodyElement: HTMLBodyElement | null = document.querySelector('body');
@@ -37,11 +38,13 @@ function App() {
     };
   }, [changeCursor]);
 
+
   const handleGlobalClick = (
-    e: React.MouseEvent,
-    refObject: React.RefObject<T>
+    e: any,
+    refObject?: any
   ): void => {
-    const clickedItemId: string = getClickedElementId({ e, refObject });
+    const target: any = e.target;
+    const clickedItemId: string = getClickedElementId({ target, refObject });
 
     if (clickedItemId !== currentClickedItem) {
       setCurrentClickedItem(clickedItemId);
@@ -50,6 +53,7 @@ function App() {
       setClickCount((prev) => iterateByThree(prev));
     }
   };
+
 
   return (
     <ClickedItemContext.Provider

@@ -13,11 +13,11 @@ import {
 
 interface ResultsBoxProps {
   resultsBoxId: string;
-  refPropResultsBox: HTMLElement | null;
+  refPropResultsBox: any;
 }
 
 const ResultsBox = ({ resultsBoxId, refPropResultsBox }: ResultsBoxProps) => {
-  const { currentClickedItem, setCurrentClickedItem } = useContext(
+  const { currentClickedItem } = useContext(
     ClickedItemContext
   ) as ClickedItemType;
 
@@ -25,7 +25,7 @@ const ResultsBox = ({ resultsBoxId, refPropResultsBox }: ResultsBoxProps) => {
     DisplayItemContext
   ) as DisplayitemType;
 
-  const { clickCount, setClickCount } = useContext(
+  const { clickCount } = useContext(
     TimesClickedContext
   ) as TimesClickedType;
 

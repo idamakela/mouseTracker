@@ -1,4 +1,5 @@
 interface HTMLObject {
+  [key: string]: string[];
   header: string[];
   main: string[];
   resultsBox: string[];
@@ -12,7 +13,11 @@ const htmlElements: HTMLObject = {
     'You clicked the header, again',
     "Don't you know this is the header already?",
   ],
-  main: ['You clicked the main', 'You clicked the main again', 'THIS IS THE MAIN ELEMENT!'],
+  main: [
+    'You clicked the main',
+    'You clicked the main again',
+    'THIS IS THE MAIN ELEMENT!',
+  ],
   resultsBox: [
     'You clicked the text container',
     'You clicked the TEXT container',

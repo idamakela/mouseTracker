@@ -1,12 +1,13 @@
-import React from 'react'
-
 type getClickedElementIdParams = {
-  e: React.MouseEvent;
-  refObject?: React.RefObject<T>;
+  target: any;
+  refObject?: any;
 };
 
-const getClickedElementId = ({ e, refObject }: getClickedElementIdParams): string => {
-  const targetId: string = e.target.id;
+const getClickedElementId = ({
+  target,
+  refObject,
+}: getClickedElementIdParams): string => {
+  const targetId: string = target.id;
 
   if (targetId === '' && refObject) {
     const currentId: string = refObject.id;

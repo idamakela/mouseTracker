@@ -47,9 +47,12 @@ const ResultsBox = ({ resultsBoxId, refPropResultsBox }: ResultsBoxProps) => {
       <p className='pt-4 pb-8'>
         Click anywhere on the screen to find out where the mouse is positioned.
       </p>
-      <div className='borderBase m-2 bg-paleBlue p-2 min-h-[180px]'>
-        <h4 className='capitalize text-lg font-semibold p-2'>results</h4>
-        <p className='p-4'>{displayClickedItem}</p>
+      <div className='borderBase m-2 bg-paleBlue min-h-[180px]'>
+        <h4 className='uppercase underlineBorder text-lq font-black tracking-widest p-2'>
+          results
+        </h4>
+        {/* i want this to be centered */}
+        <p className='p-4 text-base font-medium'>{displayClickedItem}</p>
       </div>
     </div>
   );

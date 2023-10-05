@@ -4,10 +4,7 @@ import ResultsBox from './ResultsBox';
 interface MainProps {
   mainId: string;
   resultsBoxId: string;
-  handleGlobalClick: (
-    e: any,
-    refObject: any
-  ) => void;
+  handleGlobalClick: (e: any, refObject: any) => void;
 }
 
 const Main = ({ mainId, resultsBoxId, handleGlobalClick }: MainProps) => {

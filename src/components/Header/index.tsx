@@ -3,10 +3,7 @@ import logo from '../../assets/noun-mouse-click-1642755.svg';
 
 interface HeaderProps {
   headerId: string;
-  handleGlobalClick: (
-    e: any,
-    refObject: any
-  ) => void;
+  handleGlobalClick: (e: any, refObject: any) => void;
 }
 
 const Header = ({ headerId, handleGlobalClick }: HeaderProps) => {

@@ -17,7 +17,7 @@ function App() {
   const [clickCount, setClickCount] = useState<number>(0);
 
 
-  // Room for improvment, doesnt work sometimes ...?
+  // Room for improvment, but just a fun thing to try out 
   useEffect(() => {
     const bodyElement: HTMLBodyElement | null = document.querySelector('body');
     let timeoutId: any;
@@ -38,11 +38,7 @@ function App() {
     };
   }, [changeCursor]);
 
-
-  const handleGlobalClick = (
-    e: any,
-    refObject?: any
-  ): void => {
+  const handleGlobalClick = (e: any, refObject?: any): void => {
     const target: any = e.target;
     const clickedItemId: string = getClickedElementId({ target, refObject });
 
@@ -53,7 +49,6 @@ function App() {
       setClickCount((prev) => iterateByThree(prev));
     }
   };
-
 
   return (
     <ClickedItemContext.Provider
@@ -67,13 +62,17 @@ function App() {
             className='min-h-screen flex flex-col p-2 bg-paleWhite customCursor'
             onClick={() => setChangeCursor(true)}
           >
-            <Header headerId='header' handleGlobalClick={handleGlobalClick}/>
+            <Header headerId='header' handleGlobalClick={handleGlobalClick} />
             <Main
               mainId='main'
               resultsBoxId='resultsBox'
               handleGlobalClick={handleGlobalClick}
             />
-            <Footer footerId='footer' myNameId='myName' handleGlobalClick={handleGlobalClick}/>
+            <Footer
+              footerId='footer'
+              myNameId='myName'
+              handleGlobalClick={handleGlobalClick}
+            />
           </div>
         </TimesClickedContext.Provider>
       </DisplayItemContext.Provider>

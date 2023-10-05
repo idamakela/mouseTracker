@@ -25,9 +25,7 @@ const ResultsBox = ({ resultsBoxId, refPropResultsBox }: ResultsBoxProps) => {
     DisplayItemContext
   ) as DisplayitemType;
 
-  const { clickCount } = useContext(
-    TimesClickedContext
-  ) as TimesClickedType;
+  const { clickCount } = useContext(TimesClickedContext) as TimesClickedType;
 
   useEffect(() => {
     if (currentClickedItem !== '' && clickCount < 3) {
@@ -47,12 +45,20 @@ const ResultsBox = ({ resultsBoxId, refPropResultsBox }: ResultsBoxProps) => {
       <p className='pt-4 pb-8'>
         Click anywhere on the screen to find out where the mouse is positioned.
       </p>
-      <div className='borderBase m-2 bg-paleBlue min-h-[180px]'>
+
+      <div className='borderBase m-2 bg-paleBlue min-h-[180px] flex flex-col'>
         <h4 className='uppercase underlineBorder text-lq font-black tracking-widest p-2'>
           results
         </h4>
-        {/* i want this to be centered */}
-        <p className='p-4 text-base font-medium'>{displayClickedItem}</p>
+        <div className='flex justify-center content-center grow flex-wrap'>
+          {!displayClickedItem ? (
+            <p className='p-4 text-base font-medium'>
+              You haven't clicked anything yet.
+            </p>
+          ) : (
+            <p className='p-4 text-base font-medium'>{displayClickedItem}</p>
+          )}
+        </div>
       </div>
     </div>
   );

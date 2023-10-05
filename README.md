@@ -10,7 +10,7 @@ This assignment was part of the Web & App development course.
 
 <img src='./public/mouseTracker.png' alt='Advice Animal website screenshot' style='height: auto; width: auto' />
 
-[Click here to view the live website.](https://google.com)
+[Click here to view the live website.](https://mouse-tracker-sigma.vercel.app/)
 
 ## Grading
 
